@@ -1,0 +1,10 @@
+storage:
+  type: sqlite
+  path: /data/data.db
+
+endpoints:
+  - name: "WWW"
+    url: "https://beucismis.org"
+    interval: 30s
+    conditions:
+      - "[STATUS] == 200"
