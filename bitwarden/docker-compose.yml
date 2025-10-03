@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+  bitwarden:
+    image: vaultwarden/server:latest
+    container_name: bitwarden
+    restart: unless-stopped
+    ports:
+      - "${BITWARDEN_PORT}:80"
+    environment:
+      - ADMIN_TOKEN=${BITWARDEN_ADMIN_TOKEN}
+      - SIGNUPS_ALLOWED=${SIGNUPS_ALLOWED}
+      - DATABASE_URL=${DATABASE_URL}
+    volumes:
+      - ./data:/data
+    networks:
+      - common-net
+
+networks:
+  common-net:
+    external: true
