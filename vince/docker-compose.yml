@@ -1,0 +1,16 @@
+version: "3.8"
+services:
+  vince:
+    image: ghcr.io/vinceanalytics/vince:latest
+    container_name: vince
+    ports:
+      - "8080:8080"
+    environment:
+      - DOMAIN=${DOMAIN}
+      - ADMIN_USER=${ADMIN_USER}
+      - ADMIN_PASS=${ADMIN_PASS}
+      - DB_PATH=${DB_PATH}
+      - LOG_LEVEL=${LOG_LEVEL}
+    volumes:
+      - ./data:/data
+    restart: unless-stopped
